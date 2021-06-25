@@ -79,15 +79,15 @@
 
 
 
-<meta name="description" content="fatal: unable to access ‘https:&#x2F;&#x2F;github.com&#x2F;kmq116&#x2F;hexo-blog.git&#x2F;&#39;: OpenSSL SSL_read: Connection was reset, errno 10054打开Git命令页面，执行git命令脚本：修改设置，解除ssl验证git config --global http.sslVerify &quot;fals">
+<meta name="description" content="写业务代码前的思考 在写一个复杂需求的时候，一定一定要进行一个总体的分析 需求的分析，这个大需求里面的小需求是什么 在做每一个需求的时可能会遇到什么技术难点，有没有解决的办法，这里是查阅资料的阶段 有些需求的实现页没必要想的太复杂，找好相关技术的文档，一步步的看，从 demo 开始，只要这个技术的文档写的没有问题，最后都可以出货 细节的处理，有一些细节需要自己去考虑，比如对用户使用是否友好，是不是">
 <meta property="og:type" content="article">
-<meta property="og:title" content="github报错">
-<meta property="og:url" content="https://kmq116.github.io/blog/2021/05/27/github%E6%8A%A5%E9%94%99/index.html">
+<meta property="og:title" content="写业务代码要注意的">
+<meta property="og:url" content="https://kmq116.github.io/blog/2021/06/05/%E5%86%99%E4%B8%9A%E5%8A%A1%E4%BB%A3%E7%A0%81%E8%A6%81%E6%B3%A8%E6%84%8F%E7%9A%84/index.html">
 <meta property="og:site_name" content="风会停息">
-<meta property="og:description" content="fatal: unable to access ‘https:&#x2F;&#x2F;github.com&#x2F;kmq116&#x2F;hexo-blog.git&#x2F;&#39;: OpenSSL SSL_read: Connection was reset, errno 10054打开Git命令页面，执行git命令脚本：修改设置，解除ssl验证git config --global http.sslVerify &quot;fals">
+<meta property="og:description" content="写业务代码前的思考 在写一个复杂需求的时候，一定一定要进行一个总体的分析 需求的分析，这个大需求里面的小需求是什么 在做每一个需求的时可能会遇到什么技术难点，有没有解决的办法，这里是查阅资料的阶段 有些需求的实现页没必要想的太复杂，找好相关技术的文档，一步步的看，从 demo 开始，只要这个技术的文档写的没有问题，最后都可以出货 细节的处理，有一些细节需要自己去考虑，比如对用户使用是否友好，是不是">
 <meta property="og:locale">
-<meta property="article:published_time" content="2021-05-27T09:57:10.000Z">
-<meta property="article:modified_time" content="2021-06-02T14:16:21.693Z">
+<meta property="article:published_time" content="2021-06-05T00:53:20.000Z">
+<meta property="article:modified_time" content="2021-06-23T13:26:02.686Z">
 <meta property="article:author" content="coderco">
 <meta name="twitter:card" content="summary">
 
@@ -119,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="https://kmq116.github.io/blog/2021/05/27/github报错/"/>
+  <link rel="canonical" href="https://kmq116.github.io/blog/2021/06/05/写业务代码要注意的/"/>
 
 
 
 
 
-  <title>github报错 | 风会停息</title>
+  <title>写业务代码要注意的 | 风会停息</title>
   
 
 
@@ -252,7 +252,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://kmq116.github.io/blog/2021/05/27/github%E6%8A%A5%E9%94%99/">
+    <link itemprop="mainEntityOfPage" href="https://kmq116.github.io/blog/2021/06/05/%E5%86%99%E4%B8%9A%E5%8A%A1%E4%BB%A3%E7%A0%81%E8%A6%81%E6%B3%A8%E6%84%8F%E7%9A%84/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="">
@@ -269,7 +269,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">github报错</h1>
+          <h1 class="post-title" itemprop="name headline">写业务代码要注意的</h1>
         
 
         <div class="post-meta">
@@ -281,8 +281,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-05-27T17:57:10+08:00">
-                2021-05-27
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-06-05T08:53:20+08:00">
+                2021-06-05
               </time>
             
 
@@ -319,7 +319,17 @@
       
 
       
-        <h4 id="fatal-unable-to-access-‘https-github-com-kmq116-hexo-blog-git-39-OpenSSL-SSL-read-Connection-was-reset-errno-10054"><a href="#fatal-unable-to-access-‘https-github-com-kmq116-hexo-blog-git-39-OpenSSL-SSL-read-Connection-was-reset-errno-10054" class="headerlink" title="fatal: unable to access ‘https://github.com/kmq116/hexo-blog.git/&#39;: OpenSSL SSL_read: Connection was reset, errno 10054"></a>fatal: unable to access ‘<a target="_blank" rel="noopener" href="https://github.com/kmq116/hexo-blog.git/&#39;">https://github.com/kmq116/hexo-blog.git/&#39;</a>: OpenSSL SSL_read: Connection was reset, errno 10054</h4><p>打开Git命令页面，执行git命令脚本：修改设置，解除ssl验证<br><code>git config --global http.sslVerify &quot;false&quot;</code><br>链接：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/newAndHui/p/14741634.html">https://www.cnblogs.com/newAndHui/p/14741634.html</a></p>
+        <h3 id="写业务代码前的思考"><a href="#写业务代码前的思考" class="headerlink" title="写业务代码前的思考"></a>写业务代码前的思考</h3><ul>
+<li>在写一个复杂需求的时候，一定一定要进行一个总体的分析<ul>
+<li>需求的分析，这个大需求里面的小需求是什么</li>
+<li>在做每一个需求的时可能会遇到什么技术难点，有没有解决的办法，这里是查阅资料的阶段</li>
+<li>有些需求的实现页没必要想的太复杂，找好相关技术的文档，一步步的看，从 demo 开始，只要这个技术的文档写的没有问题，最后都可以出货</li>
+<li>细节的处理，有一些细节需要自己去考虑，比如对用户使用是否友好，是不是符合用户的实际使用</li>
+</ul>
+</li>
+<li>总之在写代码之前不要盲目，一定要做好前期的规划，想好了，梳理顺了再去进行编写代码，在代码编写的过程中，也要注意代码的质量，风格，规范等，以及遵从软件工程的原则，写出高可读性，高可维护性的代码</li>
+<li>改 bug 的时候也要像看开源项目源码一样，从宏观到微观，不然解决问题的思路都是错误的</li>
+</ul>
 
       
     </div>
@@ -344,8 +354,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2021/05/26/%E5%A5%BD%E7%94%A8%E7%9A%84%E5%B7%A5%E5%85%B7%E3%80%81%E5%BA%93%E3%80%81%E6%A1%86%E6%9E%B6%E8%AE%B0%E5%BD%95/" rel="next" title="好用的工具、库、框架记录">
-                <i class="fa fa-chevron-left"></i> 好用的工具、库、框架记录
+              <a href="/2021/06/03/js%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E5%AD%A6%E4%B9%A0/" rel="next" title="js设计模式学习">
+                <i class="fa fa-chevron-left"></i> js设计模式学习
               </a>
             
           </div>
@@ -354,8 +364,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2021/06/02/%E5%85%AD%E6%9C%88%E8%AE%A1%E5%88%92/" rel="prev" title="六月计划">
-                六月计划 <i class="fa fa-chevron-right"></i>
+              <a href="/2021/06/08/%E9%87%8D%E6%9E%84/" rel="prev" title="重构">
+                重构 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -502,7 +512,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#fatal-unable-to-access-%E2%80%98https-github-com-kmq116-hexo-blog-git-39-OpenSSL-SSL-read-Connection-was-reset-errno-10054"><span class="nav-number">1.</span> <span class="nav-text">fatal: unable to access ‘https:&#x2F;&#x2F;github.com&#x2F;kmq116&#x2F;hexo-blog.git&#x2F;&#39;: OpenSSL SSL_read: Connection was reset, errno 10054</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%86%99%E4%B8%9A%E5%8A%A1%E4%BB%A3%E7%A0%81%E5%89%8D%E7%9A%84%E6%80%9D%E8%80%83"><span class="nav-number">1.</span> <span class="nav-text">写业务代码前的思考</span></a></li></ol></div>
             
 
           </div>
