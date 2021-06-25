@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>元素居中 | 前端面试题</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    
+    <meta name="description" content="">
+    
+    <link rel="preload" href="/front-end-interview/assets/css/0.styles.de83e13a.css" as="style"><link rel="preload" href="/front-end-interview/assets/js/app.8488a2b1.js" as="script"><link rel="preload" href="/front-end-interview/assets/js/2.bdcba7d7.js" as="script"><link rel="preload" href="/front-end-interview/assets/js/8.8194dd0f.js" as="script"><link rel="prefetch" href="/front-end-interview/assets/js/10.d49d310e.js"><link rel="prefetch" href="/front-end-interview/assets/js/3.9015d482.js"><link rel="prefetch" href="/front-end-interview/assets/js/4.3af4e00b.js"><link rel="prefetch" href="/front-end-interview/assets/js/5.4111b6e0.js"><link rel="prefetch" href="/front-end-interview/assets/js/6.b00d925a.js"><link rel="prefetch" href="/front-end-interview/assets/js/7.28afdc98.js"><link rel="prefetch" href="/front-end-interview/assets/js/9.3baa26e7.js">
+    <link rel="stylesheet" href="/front-end-interview/assets/css/0.styles.de83e13a.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/front-end-interview/" class="home-link router-link-active"><!----> <span class="site-name">前端面试题</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <!----></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><!---->  <ul class="sidebar-links"><li><a href="/front-end-interview/" aria-current="page" class="sidebar-link">说明</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/front-end-interview/js.html" class="sidebar-link">JavaScript</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/front-end-interview/js.html#数组去重" class="sidebar-link">数组去重</a></li></ul></li><li><a href="/front-end-interview/css.html" aria-current="page" class="active sidebar-link">CSS</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/front-end-interview/css.html#元素居中" class="sidebar-link">元素居中</a></li><li class="sidebar-sub-header"><a href="/front-end-interview/css.html#常用选择器和选择器权重" class="sidebar-link">常用选择器和选择器权重</a></li><li class="sidebar-sub-header"><a href="/front-end-interview/css.html#px-、em-、rem-区别" class="sidebar-link">px 、em 、rem 区别</a></li></ul></li><li><a href="/front-end-interview/vue.html" class="sidebar-link">Vue</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/front-end-interview/vue.html#如何解决改变vue数组元素页面不更新的问题" class="sidebar-link">如何解决改变vue数组元素页面不更新的问题</a></li><li class="sidebar-sub-header"><a href="/front-end-interview/vue.html#如何在退出登录的时候清空-vuex" class="sidebar-link">如何在退出登录的时候清空 Vuex</a></li></ul></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h2 id="元素居中"><a href="#元素居中" class="header-anchor">#</a> 元素居中</h2> <h3 id="水平居中"><a href="#水平居中" class="header-anchor">#</a> 水平居中</h3> <ul><li>内联元素，宽度默认就是内容的宽度，只需要给父级添加text-align</li></ul> <p><code>.wrapper{text-align: center;}</code></p> <ul><li>块级元素，将它的<strong>margin-left</strong>和<strong>margin-right</strong>设置为auto，并且块级元素一定要设置宽度，否则<strong>元素默认为100%宽度</strong>，不需要居中。</li></ul> <div class="language-css extra-class"><pre class="language-css"><code><span class="token selector">.inner</span><span class="token punctuation">{</span>
+            <span class="token property">display</span><span class="token punctuation">:</span> block<span class="token punctuation">;</span>
+            <span class="token property">width</span><span class="token punctuation">:</span> 150px<span class="token punctuation">;</span>
+            <span class="token property">margin</span><span class="token punctuation">:</span> 0 auto<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+</code></pre></div><h3 id="竖直居中"><a href="#竖直居中" class="header-anchor">#</a> 竖直居中</h3> <ul><li><strong>内联元素</strong><br>
+第一种实用的是flex布局，这里局中的值得是相对于父盒子</li></ul> <div class="language-css extra-class"><pre class="language-css"><code><span class="token selector">.wrapper</span><span class="token punctuation">{</span>
+            <span class="token property">display</span><span class="token punctuation">:</span> flex<span class="token punctuation">;</span>
+            <span class="token property">align-items</span><span class="token punctuation">:</span> center<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+</code></pre></div><p>第二种相对于元素自身居中</p> <div class="language-css extra-class"><pre class="language-css"><code><span class="token selector">.inner</span><span class="token punctuation">{</span>
+            <span class="token property">height</span><span class="token punctuation">:</span>100px<span class="token punctuation">;</span>
+            <span class="token property">line-height</span><span class="token punctuation">:</span>100px<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><ul><li>块级元素
+<ul><li>宽高确定情况下，使用绝对定位 + 负margin</li> <li>宽高不确定情况，使用绝对定位 + transform</li></ul></li></ul> <h3 id="垂直水平居中"><a href="#垂直水平居中" class="header-anchor">#</a> 垂直水平居中</h3> <p>子元素宽高确定，使用绝对定位 + 负margin
+子元素宽高不确定，使用绝对定位 + transform</p> <div class="language-css extra-class"><pre class="language-css"><code><span class="token selector">.inner</span><span class="token punctuation">{</span>
+            <span class="token property">position</span><span class="token punctuation">:</span> absolute<span class="token punctuation">;</span>
+            <span class="token property">top</span><span class="token punctuation">:</span> 50%<span class="token punctuation">;</span>
+            <span class="token property">left</span><span class="token punctuation">:</span> 50%<span class="token punctuation">;</span>
+            <span class="token property">transform</span><span class="token punctuation">:</span> <span class="token function">translate</span><span class="token punctuation">(</span>-50%<span class="token punctuation">,</span>-50%<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token property">background</span><span class="token punctuation">:</span> blue<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+</code></pre></div><h2 id="常用选择器和选择器权重"><a href="#常用选择器和选择器权重" class="header-anchor">#</a> 常用选择器和选择器权重</h2> <div class="language- extra-class"><pre class="language-text"><code>通配符：*
+ID选择器：#ID
+类选择器：.class
+元素选择器：p、a    等
+后代选择器：p span、div a   等
+伪类选择器：a:hover 等
+属性选择器：input[type=&quot;text&quot;]  等
+</code></pre></div><p>选择器权重</p> <div class="language-css extra-class"><pre class="language-css"><code><span class="token important">!important</span> &gt; 行内 &gt; #id &gt; .class &gt; 元素和伪元素 &gt; * &gt; 继承
+</code></pre></div><h2 id="px-、em-、rem-区别"><a href="#px-、em-、rem-区别" class="header-anchor">#</a> px 、em 、rem 区别</h2> <p><strong>px像素（Pixel）</strong></p> <blockquote><p>相对长度单位。像素px是相对于显示器屏幕分辨率而言的。</p></blockquote> <p><strong>em</strong></p> <blockquote><p>em作为font-size的单位时，其代表父元素的字体大小，em作为其他属性单位时，代表自身字体大小——MDN</p></blockquote> <p>em是相对长度单位。相对于当前对象内文本的字体尺寸。如当前对行内文本的字体尺寸未被人为设置，则相对于浏览器的默认字体尺寸。</p> <ol><li>em的值并不是固定的；</li> <li>em会继承父级元素的字体大小。</li></ol> <p><strong>rem</strong></p> <blockquote><p>rem作用于非根元素时，相对于根元素字体大小；rem作用于根元素字体大小时，相对于其出初始字体大小——MDN</p></blockquote></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/front-end-interview/js.html" class="prev">
+        JavaScript
+      </a></span> <span class="next"><a href="/front-end-interview/vue.html">
+        Vue
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/front-end-interview/assets/js/app.8488a2b1.js" defer></script><script src="/front-end-interview/assets/js/2.bdcba7d7.js" defer></script><script src="/front-end-interview/assets/js/8.8194dd0f.js" defer></script>
+  </body>
+</html>
