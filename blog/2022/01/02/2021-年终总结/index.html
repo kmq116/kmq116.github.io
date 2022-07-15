@@ -1,0 +1,682 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/blog/img/favicon.png">
+  <link rel="icon" href="/blog/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="coderco">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="个人方面这一年 Blog 内容理应多很多东西的，但是在自己的编程水平提高的同时，边写边删除了大部分的文章   被删除的文章标题大致如下    《nodejs 连接 mysql 实现增删改查》- 刚刚接触用 node 写增删改查的水文    《数组拍平》- 看到 mdn Array 的 flat api，并且用原生写法仿写了一下    《vuex 学习》- 对着官网抄抄用法，记了一堆流水账    《">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2021 年终总结">
+<meta property="og:url" content="https://kmq116.github.io/blog/2022/01/02/2021-%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/index.html">
+<meta property="og:site_name" content="风会停息">
+<meta property="og:description" content="个人方面这一年 Blog 内容理应多很多东西的，但是在自己的编程水平提高的同时，边写边删除了大部分的文章   被删除的文章标题大致如下    《nodejs 连接 mysql 实现增删改查》- 刚刚接触用 node 写增删改查的水文    《数组拍平》- 看到 mdn Array 的 flat api，并且用原生写法仿写了一下    《vuex 学习》- 对着官网抄抄用法，记了一堆流水账    《">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-01-02T22:13:25.000Z">
+<meta property="article:modified_time" content="2022-07-15T15:07:00.684Z">
+<meta property="article:author" content="coderco">
+<meta property="article:tag" content="年终总结">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  <title>2021 年终总结 - 风会停息</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/blog/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/blog/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/blog/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"kmq116.github.io","root":"/blog/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/blog/local-search.xml"};
+  </script>
+  <script  src="/blog/js/utils.js" ></script>
+  <script  src="/blog/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/blog/">
+      <strong>coderco&#39;s blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/blog/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          <span id="subtitle" title="2021 年终总结">
+            
+          </span>
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-01-02 22:13" pubdate>
+          2022年1月2日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.8k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          15 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">2021 年终总结</h1>
+            
+            <div class="markdown-body">
+              
+              <h3 id="个人方面"><a href="#个人方面" class="headerlink" title="个人方面"></a>个人方面</h3><p>这一年 Blog 内容理应多很多东西的，但是在自己的编程水平提高的同时，边写边删除了大部分的文章  </p>
+<p>被删除的文章标题大致如下  </p>
+<ul>
+<li><p>《nodejs 连接 mysql 实现增删改查》- 刚刚接触用 node 写增删改查的水文  </p>
+</li>
+<li><p>《数组拍平》- 看到 mdn Array 的 flat api，并且用原生写法仿写了一下  </p>
+</li>
+<li><p>《vuex 学习》- 对着官网抄抄用法，记了一堆流水账  </p>
+</li>
+<li><p>《node websocket》- 写了个 websocket 的用法记录  </p>
+</li>
+<li><p>《this》- 对着书上介绍的 this 用法指向抄抄  </p>
+</li>
+</ul>
+<ul>
+<li>《写业务代码要注意的》- 这个还算比较有意思，从 git<br>记录里翻出了这么一段，当时写这个是很多需求都是以前没有做过的（毕竟上家公司只做过表单业务），然后到了这里，面对这些不容易，对我而言陌生的需求，我感觉压力山大，大概入职两个月的时候写了这个东西，现在看来当时真的是有心了，竟然有这种小总结</li>
+</ul>
+<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs md"><span class="hljs-section">### 写业务代码前的思考</span><br><br><span class="hljs-bullet">-</span> 在写一个复杂需求的时候，一定一定要进行一个总体的分析<br><span class="hljs-bullet">    -</span> 需求的分析，这个大需求里面的小需求是什么<br><span class="hljs-bullet">    -</span> 在做每一个需求的时可能会遇到什么技术难点，有没有解决的办法，这里是查阅资料的阶段<br><span class="hljs-bullet">    -</span> 有些需求的实现页没必要想得太复杂，找好相关技术的文档，一步步的看，从 demo 开始，只要这个技术的文档写的没有问题，最后都可以出货<br><span class="hljs-bullet">    -</span> 细节的处理，有一些细节需要自己去考虑，比如对用户使用是否友好，是不是符合用户的实际使用<br><span class="hljs-bullet">-</span> 总之在写代码之前不要盲目，一定要做好前期的规划，想好了，梳理顺了再去进行编写代码，在代码编写的过程中，也要注意代码的质量，风格，规范等，以及遵从软件工程的原则，写出高可读性，高可维护性的代码<br><span class="hljs-bullet">-</span> 改 bug 的时候也要像看开源项目源码一样，从宏观到微观，不然解决问题的思路都是错误的<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><p>《重构》- 读了 《重构》这本书后抄了一些书中的代码，假装自己学会了😊  </p>
+</li>
+<li><p>《跟着 jquery 学正则》- 在尝试看 jquery 源代码的时候把正则表达式学习了一下，然而最后对源码的阅读进度在 jquery 的无 new 构建上止步  </p>
+</li>
+<li><p>《前端编译原理 the super tiny compiler》- 第一次接触到前端编译原理，了解到 ast、parser 等概念，记得这个 200 行的小项目我看了三四天  </p>
+</li>
+</ul>
+<p>总之就是，今年写的这种文章，现在回过头看，虽然觉得很水很幼稚，但是在这个过程中，解决问题的能力越来越强了  </p>
+<p>期间读 <a target="_blank" rel="noopener" href="https://antfu.me/posts/about-yak-shaving-zh">关于 Yak Shaving</a> 这篇文章给我的启发很大，里面有提到</p>
+<blockquote>
+<p>Yak Shaving 的字面意思是为剪牦牛毛，而引申出来的意思是，当你在进行一个工作时，发现另一个工作还没有完成，你便先去解决那个工作，在进行那个工作时，你又发现另一个工作… 如此往复，让你偏离了原本本该完成的工作，最终却也什么都没有完成。</p>
+</blockquote>
+<p>在其他领域可能这样做会导致没什么成果，但是在编程这个领域，这样做得结果就是在不断学习的过程中，解决问题的能力，各种技能也都会得到提升。</p>
+<h3 id="工作方面"><a href="#工作方面" class="headerlink" title="工作方面"></a>工作方面</h3><p>今年因为项目一直在维护，确实见识到了什么叫代码的脏乱差<br>也让我的内心更加确定了，编程这东西实力与工作经验完全不是强相关<br>发现了每个人都有自己擅长的东西和不擅长的东西  </p>
+<p>毕业这一年半以来，最明显的就是自己的棱角被磨平了好多，没有了在校时的狂气（指在校期间总觉得就业很简单，结果差点失业），可能这就是社会大学对每个人的磨练吧  </p>
+<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><ul>
+<li>给 uniapp 提了一个 pr ，bug 并不难修复，难的是我将项目拉下来并且跑起来，最后定位到 bug 所在的过程。这个调试的过程对我而言是一段痛并快乐的经历</li>
+<li>给 windicss 翻译了 3-4 篇文档，做出了一点贡献，在参与这个项目的过程中，学会了开源的协作方式  </li>
+<li>英语水平有了显著提高，可以较为流畅得阅读一些英文文档，学会了用英文搜索自己遇到的问题（善用英文搜索，利好你我他，大多数问题分分钟解决）  </li>
+</ul>
+<blockquote>
+<p>思考：每每我在英文环境下找到自己问题的答案的时候，就会对国内的互联网环境感到悲哀，这么多年你抄我我抄你，不断的向技术圈排泄各种垃圾<br>一些爬虫甚至都已经爬一些墙外网站然后翻译（机翻）到国内，每次打开这种搜索结果，都会被恶心到  </p>
+</blockquote>
+<h3 id="展望一下-2022"><a href="#展望一下-2022" class="headerlink" title="展望一下 2022"></a>展望一下 2022</h3><p>英语还是要继续学习的，不为别的，就为了能读上第一手英文文档，能对开源社区多做一些贡献  😜  </p>
+<p>日语出于兴趣也会持续学习的 😉</p>
+<p>保持学习，好好生活，热爱生活，少比较，少焦虑，降低期望，提高幸福感，少熬夜，不遗憾过去，展望未来 🤪</p>
+<p>只能这样子加加油，打打气了，不管咋样，生活还是要继续的不是吗 💕💕💕💕</p>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/blog/tags/%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/">#年终总结</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>2021 年终总结</div>
+      <div>https://kmq116.github.io/blog/2022/01/02/2021-%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>coderco</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年1月2日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/blog/2022/01/11/%E8%AE%B0%E4%B8%80%E6%AC%A1%E4%BB%A3%E7%A0%81%E4%BC%98%E5%8C%96/" title="记一次代码优化">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">记一次代码优化</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/blog/2021/12/20/haskell/%E5%89%8D%E7%AB%AF%E7%9A%84-haskell-%E7%AC%94%E8%AE%B0-%E2%91%A1/" title="前端的 haskell 笔记 ②">
+                        <span class="hidden-mobile">前端的 haskell 笔记 ②</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.staticfile.org/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/blog/js/events.js" ></script>
+<script  src="/blog/js/plugins.js" ></script>
+
+
+  
+    <script  src="/blog/js/img-lazyload.js" ></script>
+  
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var title = subtitle.title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/tocbot/4.18.0/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/blog/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/blog/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

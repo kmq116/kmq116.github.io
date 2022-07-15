@@ -1,0 +1,743 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/blog/img/favicon.png">
+  <link rel="icon" href="/blog/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="coderco">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="本文有些语句可能带有翻译腔，其为本人故意为之   开始我们假设，已经安装好了 haskell，并且在终端输入了 ghci 这个命令，好，现在可以在终端里面输入 haskell 的语句了 首先 12342 + 1549 * 100 1800 - 185 &#x2F; 2  首先就是 haskell 的语法，跟我输入的空格按键是没什么关系的   基本的符号也与前端 JS 中的加减乘除是一样的，同样，也可以使用">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端的 haskell 笔记 ①">
+<meta property="og:url" content="https://kmq116.github.io/blog/2021/12/17/haskell/%E5%89%8D%E7%AB%AF%E7%9A%84-haskell-%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="风会停息">
+<meta property="og:description" content="本文有些语句可能带有翻译腔，其为本人故意为之   开始我们假设，已经安装好了 haskell，并且在终端输入了 ghci 这个命令，好，现在可以在终端里面输入 haskell 的语句了 首先 12342 + 1549 * 100 1800 - 185 &#x2F; 2  首先就是 haskell 的语法，跟我输入的空格按键是没什么关系的   基本的符号也与前端 JS 中的加减乘除是一样的，同样，也可以使用">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-12-17T21:14:00.000Z">
+<meta property="article:modified_time" content="2022-07-15T15:07:00.684Z">
+<meta property="article:author" content="coderco">
+<meta property="article:tag" content="haskell">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  <title>前端的 haskell 笔记 ① - 风会停息</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/blog/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/blog/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/blog/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"kmq116.github.io","root":"/blog/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/blog/local-search.xml"};
+  </script>
+  <script  src="/blog/js/utils.js" ></script>
+  <script  src="/blog/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/blog/">
+      <strong>coderco&#39;s blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/blog/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          <span id="subtitle" title="前端的 haskell 笔记 ①">
+            
+          </span>
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2021-12-17 21:14" pubdate>
+          2021年12月17日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          5.1k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          43 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">前端的 haskell 笔记 ①</h1>
+            
+            <div class="markdown-body">
+              
+              <blockquote>
+<p>本文有些语句可能带有翻译腔，其为本人故意为之 </p>
+</blockquote>
+<h3 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h3><p>我们假设，已经安装好了 haskell，并且在终端输入了 ghci 这个命令，好，现在可以在终端里面输入 haskell 的语句了</p>
+<p>首先</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs haskell"><span class="hljs-number">2</span> + <span class="hljs-number">15</span><br><span class="hljs-number">49</span> * <span class="hljs-number">100</span> <br><span class="hljs-number">1800</span> - <span class="hljs-number">18</span><br><span class="hljs-number">5</span> / <span class="hljs-number">2</span><br></code></pre></td></tr></table></figure>
+
+<p>首先就是 haskell 的语法，跟我输入的空格按键是没什么关系的  </p>
+<p>基本的符号也与前端 JS 中的加减乘除是一样的，同样，也可以使用小括号来提高运算的优先级  </p>
+<p>值得注意的是 如果运行 5 * -3 会报错，需要对 -3 加括号，才能得到正确的结果 ，但是实际敲代码的时候，看见报错改掉就好了，相信我一定不会多次犯这种错误的</p>
+<p>布尔值，符号与 JS 中不太一样，是由大写字面开头的</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs haskell"><span class="hljs-type">True</span> || <span class="hljs-type">False</span><br></code></pre></td></tr></table></figure>
+
+<p>其他逻辑运算符号，结果也与 JS 相同</p>
+<p>但是 非运算 的符号并不是 <code>!</code> 而是 <code>not</code> ,而且使用 <code>not</code> 的时候后面需要跟一个纯纯的布尔值，不像 JS 那样，是一个表达式或者其他任何的东西</p>
+<p>相等运算符，只需要 == 就可以等于 JS 中的 === 而且比 JS 的更加严谨，而且不同类型之间不可以进行比较，不同类型之间的基本运算也会报错，然后其语言中的不等于号是 <code>/=</code></p>
+<h3 id="JS-里没有的函数"><a href="#JS-里没有的函数" class="headerlink" title="JS 里没有的函数"></a>JS 里没有的函数</h3><figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs haskell"><span class="hljs-title">succ</span> <span class="hljs-number">8</span> =&gt; 会输出<span class="hljs-number">9</span> 表示一个数字的后继<br><span class="hljs-title">min</span> <span class="hljs-number">9</span> <span class="hljs-number">10</span> =&gt; 取出两者的一个最小值<br><span class="hljs-title">max</span> <span class="hljs-number">1</span> <span class="hljs-number">2</span> =&gt; 取出两者的一个最大值<br></code></pre></td></tr></table></figure>
+
+<p>刚刚说了 haskell 没空格不敏感，但是在调用这些个函数的时候，需要在函数后面加上空格，这样才能正常运行</p>
+<h3 id="第一个函数"><a href="#第一个函数" class="headerlink" title="第一个函数"></a>第一个函数</h3><blockquote>
+<p>一个参数的函数  </p>
+</blockquote>
+<p>定义  </p>
+<figure class="highlight hs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs hs"><span class="hljs-title">doubleMe</span> x = x + x<br></code></pre></td></tr></table></figure>
+<p>调用  </p>
+<figure class="highlight hs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs hs"><span class="hljs-title">doubleMe</span> <span class="hljs-number">9</span> <br></code></pre></td></tr></table></figure>
+<p>结果为 18</p>
+<p>我对其函数的理解是 <code>函数声明</code> <code>参数</code> <code>返回值</code>  </p>
+<p>JS 中类似这样  </p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">const</span> <span class="hljs-title function_">doubleMe</span> = (<span class="hljs-params">x</span>) =&gt; x + x<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>那两个参数的函数长什么样子呢  </p>
+</blockquote>
+<p>定义  </p>
+<figure class="highlight hs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs hs"><span class="hljs-title">doubleUs</span> x y = x * <span class="hljs-number">2</span> + y * <span class="hljs-number">2</span><br></code></pre></td></tr></table></figure>
+<p>调用  </p>
+<figure class="highlight hs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs hs"><span class="hljs-title">doubleUs</span> <span class="hljs-number">4</span> <span class="hljs-number">5</span><br></code></pre></td></tr></table></figure>
+
+<p>为什么要说 haskell 是纯函数式语言请看  </p>
+<figure class="highlight hs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs hs"><span class="hljs-title">doubleUs</span> = doubleMe x + doubleMe y<br></code></pre></td></tr></table></figure>
+
+
+<p>看到了吗，函数式的可组合的威力  </p>
+<p>如果是 JS 比较简洁的写法要这样   </p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">const</span> <span class="hljs-title function_">doubleUs</span> = (<span class="hljs-params">x,y</span>) =&gt; <span class="hljs-title function_">doubleMe</span>(x) + <span class="hljs-title function_">doubleMe</span>(y)<br></code></pre></td></tr></table></figure>
+
+<p>额。。。。。。貌似也挺简洁的，虽然但是，谁叫 JS 是动态弱类型的语言呢，哼哼~~~  </p>
+<figure class="highlight hs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs hs"><span class="hljs-title">doubleSmallNumber</span> x = <span class="hljs-keyword">if</span> x &gt; <span class="hljs-number">100</span><br>                        <span class="hljs-keyword">then</span> x<br>                        <span class="hljs-keyword">else</span> x*<span class="hljs-number">2</span> <br></code></pre></td></tr></table></figure>
+<p>haskell 的 if 语句也是作为表达式存在的，而且其 else 语句不可以省略，上面的函数其实大可不必换行，可能这里的换行只是为了看起来清晰一些 ?</p>
+<figure class="highlight hs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs hs"><span class="hljs-title">doubleSmallNumber&#x27;</span> x = (<span class="hljs-keyword">if</span> x &gt; <span class="hljs-number">100</span> <span class="hljs-keyword">then</span> x <span class="hljs-keyword">else</span> x * <span class="hljs-number">2</span>) + <span class="hljs-number">1</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ada">joe<span class="hljs-symbol">&#x27;Berden</span> = <span class="hljs-string">&quot;50W&quot;</span><br></code></pre></td></tr></table></figure>
+<p>中间有 <code>&#39;</code> 也是允许的  </p>
+<h4 id="函数名不允许大写开头"><a href="#函数名不允许大写开头" class="headerlink" title="函数名不允许大写开头"></a>函数名不允许大写开头</h4><h3 id="list"><a href="#list" class="headerlink" title="list"></a>list</h3><p>常见的操作</p>
+<p>数组拼接类似于 concat </p>
+<figure class="highlight hs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs hs">[<span class="hljs-number">1</span>,<span class="hljs-number">2</span>] ++ [<span class="hljs-number">3</span>,<span class="hljs-number">4</span>]<br></code></pre></td></tr></table></figure>
+<p>数组中也只能放同类型的元素</p>
+<p>++ 号还可以拼接字符串  </p>
+<figure class="highlight hs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs hs"><span class="hljs-string">&quot;hello &quot;</span> ++ <span class="hljs-string">&quot;world&quot;</span><br>[&#x27;w&#x27;,&#x27;o&#x27;] ++ [&#x27;o&#x27;,&#x27;t&#x27;] =&gt; <span class="hljs-string">&quot;woot&quot;</span><br></code></pre></td></tr></table></figure>
+<p>++ 操作符号执行的时候会遍历前面的数组或者字符串，所以操作大量数据的时候需要注意一下  </p>
+<p>另一个语法糖 <code>:</code> 在 list 字符串的前面添加一个元素</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">Prelude</span>&gt; <span class="hljs-number">1</span>:<span class="hljs-number">2</span>:<span class="hljs-number">3</span>:[]<span class="hljs-meta"></span><br><span class="hljs-meta">[1,2,3]</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs 1c">Prelude&gt; &#x27;A&#x27;:<span class="hljs-string">&quot; SMALL CAT&quot;</span> <br><span class="hljs-string">&quot;A SMALL CAT&quot;</span><br></code></pre></td></tr></table></figure>
+
+<p>如果想根据 list 的索引获取元素，使用 !! 符号进行  </p>
+<figure class="highlight erlang-repl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs erlang-repl">Prelude&gt; [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>]!!<span class="hljs-number">1</span><br><span class="hljs-number">2</span><br>Prelude&gt; [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>]!!<span class="hljs-number">4</span><br>*** Exception: Prelude.!!: index too large<br></code></pre></td></tr></table></figure>
+<p>同样二维数组也是支持的 </p>
+<figure class="highlight inform7"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs inform7">Prelude&gt; let b = <span class="hljs-comment">[<span class="hljs-comment">[1,2,3,4]</span>,<span class="hljs-comment">[5,3,3,3]</span>,<span class="hljs-comment">[1,2,2,3,4]</span>,<span class="hljs-comment">[1,2,3]</span>]</span>   <br>Prelude&gt; b<br><span class="hljs-comment">[<span class="hljs-comment">[1,2,3,4]</span>,<span class="hljs-comment">[5,3,3,3]</span>,<span class="hljs-comment">[1,2,2,3,4]</span>,<span class="hljs-comment">[1,2,3]</span>]</span><br></code></pre></td></tr></table></figure>
+<p>list 支持比较大小，前提是里面元素类型是可比较元素  </p>
+<figure class="highlight inform7"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs inform7">Prelude&gt; <span class="hljs-comment">[1,2,3]</span> == <span class="hljs-comment">[1,2,3]</span><br>True<br>Prelude&gt; <span class="hljs-comment">[2,2,3]</span> == <span class="hljs-comment">[1,2,3]</span><br>False<br>Prelude&gt; <span class="hljs-comment">[2,2,3]</span> &gt; <span class="hljs-comment">[1,2,3]</span><br>True<br>Prelude&gt; <span class="hljs-comment">[2,2,3]</span> &gt; <span class="hljs-comment">[1,9,9]</span><br>True   <br></code></pre></td></tr></table></figure>
+<p>其他常见 list 操作  </p>
+<p>取其头部<br><code>head [1,2,3] =&gt; 1</code></p>
+<p>最后一个元素<br><code>last [1,2,3]=&gt;3</code></p>
+<p>去除头部的第一个元素,返回剩余数组（18cm 不含头）<br><code>tail [1,2,3] =&gt; [2,3]</code></p>
+<p>去除尾部返回前面所有，顾头不顾腚<br><code>init [1,2,3]=&gt;[1,2]</code></p>
+<p>数组长度<br><code>length [1,2,3]=&gt;3</code></p>
+<p>空检查 =&gt; boolean<br><code>null [1,2,3]=&gt;False</code><br><code>null []=&gt;True</code></p>
+<p>反转数组<br><code>reverse [5,4,3,2,1]=&gt;[1,2,3,4,5]</code>  </p>
+<p>返回数组前几个元素<br><code>take 2 [1,2,3]=&gt;[1,2]</code>  </p>
+<p>返回数组后几个元素<br><code>drop 2 [1,2,3]=&gt;[2,3]</code>  </p>
+<p>返回数组最大元素<br><code>maximum [1,2,3]=&gt;3</code>  </p>
+<p>返回数组最小元素<br><code>minimum [1,2,3]=&gt;1</code>  </p>
+<p>返回数组元素的和<br><code>sum [1,2,3]=&gt;6</code>  </p>
+<p>返回数组元素的乘积</p>
+<figure class="highlight hs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs hs"><span class="hljs-title">product</span> [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>]=&gt;<span class="hljs-number">6</span><br>```  <br>判断元素是否在数组中  <br>```hs<br><span class="hljs-title">elem</span> <span class="hljs-number">3</span> [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>]=&gt;<span class="hljs-type">True</span> <br><span class="hljs-title">elem</span> <span class="hljs-number">4</span> [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>]=&gt;<span class="hljs-type">False</span><br><span class="hljs-number">3</span> `elem` [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>]=&gt;<span class="hljs-type">True</span> <span class="hljs-comment">--缀函数</span><br></code></pre></td></tr></table></figure>
+<p>上面的以缀函数的形式也可  </p>
+<h3 id="list-的语法糖"><a href="#list-的语法糖" class="headerlink" title="list 的语法糖"></a>list 的语法糖</h3><figure class="highlight hs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs hs"><span class="hljs-type">Prelude</span>&gt; [<span class="hljs-number">1</span>..<span class="hljs-number">20</span>]<br>[<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">6</span>,<span class="hljs-number">7</span>,<span class="hljs-number">8</span>,<span class="hljs-number">9</span>,<span class="hljs-number">10</span>,<span class="hljs-number">11</span>,<span class="hljs-number">12</span>,<span class="hljs-number">13</span>,<span class="hljs-number">14</span>,<span class="hljs-number">15</span>,<span class="hljs-number">16</span>,<span class="hljs-number">17</span>,<span class="hljs-number">18</span>,<span class="hljs-number">19</span>,<span class="hljs-number">20</span>]<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight hs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs hs"><span class="hljs-type">Prelude</span>&gt; [&#x27;a&#x27;..&#x27;z&#x27;]<br><span class="hljs-string">&quot;abcdefghijklmnopqrstuvwxyz&quot;</span><br><span class="hljs-type">Prelude</span>&gt; [&#x27;<span class="hljs-type">A&#x27;</span>..&#x27;<span class="hljs-type">F&#x27;</span>]<br><span class="hljs-string">&quot;ABCDEF&quot;</span><br><span class="hljs-type">Prelude</span>&gt; [<span class="hljs-number">2</span>,<span class="hljs-number">4</span>..<span class="hljs-number">20</span>] <br>[<span class="hljs-number">2</span>,<span class="hljs-number">4</span>,<span class="hljs-number">6</span>,<span class="hljs-number">8</span>,<span class="hljs-number">10</span>,<span class="hljs-number">12</span>,<span class="hljs-number">14</span>,<span class="hljs-number">16</span>,<span class="hljs-number">18</span>,<span class="hljs-number">20</span>]<br></code></pre></td></tr></table></figure>
+
+<h3 id="无限循环"><a href="#无限循环" class="headerlink" title="无限循环"></a>无限循环</h3><p>haskell 是惰性求值的，只会返回被使用的值</p>
+<figure class="highlight hs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs hs"><span class="hljs-title">cycle</span> [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>] <span class="hljs-comment">-- 在控制台中无限循环</span><br><br><span class="hljs-comment">--如果这样会取出自己需要个数的元素</span><br><span class="hljs-type">Prelude</span>&gt; take <span class="hljs-number">10</span> (cycle [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>])<br>[<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">1</span>]<br><br><span class="hljs-type">Prelude</span>&gt; take <span class="hljs-number">12</span> (cycle <span class="hljs-string">&quot;ABC&quot;</span>)<br><span class="hljs-string">&quot;ABCABCABCABC&quot;</span><br></code></pre></td></tr></table></figure>
+<p>你可能注意到了 , haskell 是区分字符串 <code>&quot;&quot;</code> 和单个字符 <code>&#39;&#39;</code> 的符号的  </p>
+<p>repeat 重复一个元素 , 无限循环</p>
+<figure class="highlight hs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs hs"><span class="hljs-type">Prelude</span>&gt; take <span class="hljs-number">10</span> (repeat <span class="hljs-number">5</span> )<br>[<span class="hljs-number">5</span>,<span class="hljs-number">5</span>,<span class="hljs-number">5</span>,<span class="hljs-number">5</span>,<span class="hljs-number">5</span>,<span class="hljs-number">5</span>,<span class="hljs-number">5</span>,<span class="hljs-number">5</span>,<span class="hljs-number">5</span>,<span class="hljs-number">5</span>]<br></code></pre></td></tr></table></figure>
+<p>集合写法<br>如例子，就是数学中的集合</p>
+<figure class="highlight hs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs hs"><span class="hljs-type">Prelude</span>&gt; [x*<span class="hljs-number">2</span> | x&lt;-[<span class="hljs-number">1</span>..<span class="hljs-number">10</span>]]<br>[<span class="hljs-number">2</span>,<span class="hljs-number">4</span>,<span class="hljs-number">6</span>,<span class="hljs-number">8</span>,<span class="hljs-number">10</span>,<span class="hljs-number">12</span>,<span class="hljs-number">14</span>,<span class="hljs-number">16</span>,<span class="hljs-number">18</span>,<span class="hljs-number">20</span>]<br><span class="hljs-comment">--后面添加限制的例子 返回将 x 每一项乘以 2 并且大于 12 的元素的集合</span><br><br><span class="hljs-type">Prelude</span>&gt; [x*<span class="hljs-number">2</span>|x &lt;-[<span class="hljs-number">1</span>..<span class="hljs-number">10</span>],x*<span class="hljs-number">2</span>&gt;=<span class="hljs-number">12</span>]<br>[<span class="hljs-number">12</span>,<span class="hljs-number">14</span>,<span class="hljs-number">16</span>,<span class="hljs-number">18</span>,<span class="hljs-number">20</span>]<br><br><span class="hljs-comment">--更多限制 用缀函数来筛选 ÷7 余数为 3 的元素</span><br><span class="hljs-type">Prelude</span>&gt; [x|x &lt;-[<span class="hljs-number">50</span>..<span class="hljs-number">100</span>],x `mod` <span class="hljs-number">7</span> == <span class="hljs-number">3</span>]<br>[<span class="hljs-number">52</span>,<span class="hljs-number">59</span>,<span class="hljs-number">66</span>,<span class="hljs-number">73</span>,<span class="hljs-number">80</span>,<span class="hljs-number">87</span>,<span class="hljs-number">94</span>]<br><br><span class="hljs-comment">--骚操作 将其限制为返回一个集合中的偶数 并且根据条件将返回值进行替换</span><br><span class="hljs-type">Prelude</span>&gt; custom_filter xs = [<span class="hljs-keyword">if</span> x &lt; <span class="hljs-number">10</span> <span class="hljs-keyword">then</span> <span class="hljs-string">&quot;BOOM!&quot;</span> <span class="hljs-keyword">else</span> <span class="hljs-string">&quot;boom!&quot;</span> | x &lt;- xs,odd x] <br><span class="hljs-type">Prelude</span>&gt; custom_filter [<span class="hljs-number">7</span>..<span class="hljs-number">13</span>]<br>[<span class="hljs-string">&quot;BOOM!&quot;</span>,<span class="hljs-string">&quot;BOOM!&quot;</span>,<span class="hljs-string">&quot;boom!&quot;</span>,<span class="hljs-string">&quot;boom!&quot;</span>]<br><br><span class="hljs-comment">-- 多个限制条件 将符合筛选条件的元素返回 这里的 /= 是不等于</span><br><span class="hljs-type">Prelude</span>&gt; [x | x &lt;- [<span class="hljs-number">10</span>..<span class="hljs-number">20</span>], x /= <span class="hljs-number">20</span>,x/=<span class="hljs-number">13</span>]<br>[<span class="hljs-number">10</span>,<span class="hljs-number">11</span>,<span class="hljs-number">12</span>,<span class="hljs-number">14</span>,<span class="hljs-number">15</span>,<span class="hljs-number">16</span>,<span class="hljs-number">17</span>,<span class="hljs-number">18</span>,<span class="hljs-number">19</span>]<br><br><span class="hljs-comment">-- 多个集合中取元素</span><br><span class="hljs-type">Prelude</span>&gt; [ x*y | x &lt;- [<span class="hljs-number">2</span>,<span class="hljs-number">5</span>,<span class="hljs-number">10</span>], y &lt;- [<span class="hljs-number">8</span>,<span class="hljs-number">10</span>,<span class="hljs-number">11</span>]]   <br>[<span class="hljs-number">16</span>,<span class="hljs-number">20</span>,<span class="hljs-number">22</span>,<span class="hljs-number">40</span>,<span class="hljs-number">50</span>,<span class="hljs-number">55</span>,<span class="hljs-number">80</span>,<span class="hljs-number">100</span>,<span class="hljs-number">110</span>]<br><br><span class="hljs-comment">-- 多个集合取元素 并附加筛选条件</span><br><span class="hljs-type">Prelude</span>&gt; [ x*y | x &lt;- [<span class="hljs-number">2</span>,<span class="hljs-number">5</span>,<span class="hljs-number">10</span>], y &lt;- [<span class="hljs-number">8</span>,<span class="hljs-number">10</span>,<span class="hljs-number">11</span>], x*y &gt; <span class="hljs-number">50</span>] <br>[<span class="hljs-number">55</span>,<span class="hljs-number">80</span>,<span class="hljs-number">100</span>,<span class="hljs-number">110</span>]<br><br><span class="hljs-comment">-- 灵活 强大 自动排列组合 这让我想起来小学时候将三个字的名字颠倒组合 </span><br><span class="hljs-type">Prelude</span>&gt; <span class="hljs-keyword">let</span> nouns = [<span class="hljs-string">&quot;hobo&quot;</span>,<span class="hljs-string">&quot;frog&quot;</span>,<span class="hljs-string">&quot;pope&quot;</span>]   <br><span class="hljs-type">Prelude</span>&gt; <span class="hljs-keyword">let</span> adjectives = [<span class="hljs-string">&quot;lazy&quot;</span>,<span class="hljs-string">&quot;grouchy&quot;</span>,<span class="hljs-string">&quot;scheming&quot;</span>]   <br><span class="hljs-type">Prelude</span>&gt; [adjective ++ <span class="hljs-string">&quot; &quot;</span> ++ noun | adjective &lt;- adjectives, noun &lt;- nouns]   <br>[<span class="hljs-string">&quot;lazy hobo&quot;</span>,<span class="hljs-string">&quot;lazy frog&quot;</span>,<span class="hljs-string">&quot;lazy pope&quot;</span>,<span class="hljs-string">&quot;grouchy hobo&quot;</span>,<span class="hljs-string">&quot;grouchy frog&quot;</span>,<span class="hljs-string">&quot;grouchy pope&quot;</span>,<span class="hljs-string">&quot;scheming hobo&quot;</span>,<span class="hljs-string">&quot;scheming frog&quot;</span>,<span class="hljs-string">&quot;scheming pope&quot;</span>]  <br></code></pre></td></tr></table></figure>
+<h3 id="length-函数编写"><a href="#length-函数编写" class="headerlink" title="length 函数编写"></a>length 函数编写</h3><figure class="highlight hs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs hs"><span class="hljs-comment">-- 思路就是将传入数据的每一项都替换为 1，返回这个 list 然后对其进行求和</span><br><span class="hljs-type">Prelude</span>&gt; length&#x27; xs = sum [<span class="hljs-number">1</span> | _ &lt;- xs]<br><span class="hljs-type">Prelude</span>&gt; length&#x27; [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>]<br><span class="hljs-number">3</span><br></code></pre></td></tr></table></figure>
+<p>如果将这个函数用 JS 编写，我是这样实现的，可以看到，hs 这语言太抽象了</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> <span class="hljs-title function_">_length</span> = (<span class="hljs-params">arr</span>) =&gt; arr.<span class="hljs-title function_">map</span>(<span class="hljs-function">(<span class="hljs-params">_</span>) =&gt;</span> <span class="hljs-number">1</span>).<span class="hljs-title function_">reduce</span>(<span class="hljs-function">(<span class="hljs-params">acc, cur</span>) =&gt;</span> acc + cur, <span class="hljs-number">0</span>);<br></code></pre></td></tr></table></figure>
+
+<p>简而言之就是 集合里的参数 <code>[替换条件 | 从那个集合中映射数据 , ...返回 list 的限制条件]</code></p>
+<h3 id="元组"><a href="#元组" class="headerlink" title="元组"></a>元组</h3><figure class="highlight hs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs hs"><span class="hljs-comment">-- 不同类型的数据的集合</span><br><span class="hljs-type">Prelude</span>&gt; (<span class="hljs-number">123</span>,&#x27;a&#x27;,<span class="hljs-string">&quot;123123&quot;</span>)<br>(<span class="hljs-number">123</span>,&#x27;a&#x27;,<span class="hljs-string">&quot;123123&quot;</span>)<br><br><span class="hljs-comment">-- 返回元组首项</span><br><span class="hljs-type">Prelude</span>&gt; fst (<span class="hljs-number">8</span>,<span class="hljs-number">11</span>)   <br><span class="hljs-number">8</span><br><br><span class="hljs-comment">-- 返回元组尾项</span><br><span class="hljs-type">Prelude</span>&gt; snd (<span class="hljs-number">8</span>,<span class="hljs-number">11</span>)   <br><span class="hljs-number">11</span><br><br><span class="hljs-meta">#### 很 cool 的函数 zip</span><br>```hs<br><span class="hljs-type">Prelude</span>&gt; zip [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>] [<span class="hljs-number">5</span>,<span class="hljs-number">5</span>,<span class="hljs-number">5</span>,<span class="hljs-number">5</span>,<span class="hljs-number">5</span>]   <br>[(<span class="hljs-number">1</span>,<span class="hljs-number">5</span>),(<span class="hljs-number">2</span>,<span class="hljs-number">5</span>),(<span class="hljs-number">3</span>,<span class="hljs-number">5</span>),(<span class="hljs-number">4</span>,<span class="hljs-number">5</span>),(<span class="hljs-number">5</span>,<span class="hljs-number">5</span>)]<br><span class="hljs-type">Prelude</span>&gt; zip [<span class="hljs-number">1</span> .. <span class="hljs-number">5</span>] [<span class="hljs-string">&quot;one&quot;</span>, <span class="hljs-string">&quot;two&quot;</span>, <span class="hljs-string">&quot;three&quot;</span>, <span class="hljs-string">&quot;four&quot;</span>, <span class="hljs-string">&quot;five&quot;</span>]   <br>[(<span class="hljs-number">1</span>,<span class="hljs-string">&quot;one&quot;</span>),(<span class="hljs-number">2</span>,<span class="hljs-string">&quot;two&quot;</span>),(<span class="hljs-number">3</span>,<span class="hljs-string">&quot;three&quot;</span>),(<span class="hljs-number">4</span>,<span class="hljs-string">&quot;four&quot;</span>),(<span class="hljs-number">5</span>,<span class="hljs-string">&quot;five&quot;</span>)]<br><span class="hljs-comment">-- 如你所见 其会将两个集合中的元素组合成元组 返回一个 list</span><br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>如文，简简单单的基本语法就先到这里，sayonara！！！</p>
+</blockquote>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/blog/tags/haskell/">#haskell</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>前端的 haskell 笔记 ①</div>
+      <div>https://kmq116.github.io/blog/2021/12/17/haskell/%E5%89%8D%E7%AB%AF%E7%9A%84-haskell-%E7%AC%94%E8%AE%B0/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>coderco</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2021年12月17日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/blog/2021/12/20/haskell/%E5%89%8D%E7%AB%AF%E7%9A%84-haskell-%E7%AC%94%E8%AE%B0-%E2%91%A1/" title="前端的 haskell 笔记 ②">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">前端的 haskell 笔记 ②</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/blog/2021/11/27/%E7%AE%97%E6%B3%95/%E7%AE%97%E6%B3%95-%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E9%93%BE%E8%A1%A8/" title="算法-合并两个有序链表">
+                        <span class="hidden-mobile">算法-合并两个有序链表</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.staticfile.org/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/blog/js/events.js" ></script>
+<script  src="/blog/js/plugins.js" ></script>
+
+
+  
+    <script  src="/blog/js/img-lazyload.js" ></script>
+  
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var title = subtitle.title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/tocbot/4.18.0/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/blog/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/blog/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

@@ -1,0 +1,651 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/blog/img/favicon.png">
+  <link rel="icon" href="/blog/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="coderco">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="最近在好好学习 TS ,今天下定决心好好啃一啃 TS 官方文档，打开文档第一段就是   祝贺你选择了 TS 作为你的第一门语言，你的决定很棒棒哦 ！！！  感想的话，棒不棒我不敢说，但是 vue2 当年使用的 flow 作为类型检查，网上大概在 2017 年的时候，vue 项目中配置 flow 的文章一大堆，能说明什么？flow 很火吗？我不清楚但是 TS 这东西，学一学还是有必要的   所以开始">
+<meta property="og:type" content="article">
+<meta property="og:title" content="啃 TS 官方文档 ①">
+<meta property="og:url" content="https://kmq116.github.io/blog/2021/11/17/ts/%E5%95%83-ts-%E5%AE%98%E6%96%B9%E6%96%87%E6%A1%A3/index.html">
+<meta property="og:site_name" content="风会停息">
+<meta property="og:description" content="最近在好好学习 TS ,今天下定决心好好啃一啃 TS 官方文档，打开文档第一段就是   祝贺你选择了 TS 作为你的第一门语言，你的决定很棒棒哦 ！！！  感想的话，棒不棒我不敢说，但是 vue2 当年使用的 flow 作为类型检查，网上大概在 2017 年的时候，vue 项目中配置 flow 的文章一大堆，能说明什么？flow 很火吗？我不清楚但是 TS 这东西，学一学还是有必要的   所以开始">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-11-17T21:25:19.000Z">
+<meta property="article:modified_time" content="2022-07-15T15:07:00.684Z">
+<meta property="article:author" content="coderco">
+<meta property="article:tag" content="ts">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  <title>啃 TS 官方文档 ① - 风会停息</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/blog/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/blog/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/blog/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"kmq116.github.io","root":"/blog/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/blog/local-search.xml"};
+  </script>
+  <script  src="/blog/js/utils.js" ></script>
+  <script  src="/blog/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/blog/">
+      <strong>coderco&#39;s blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/blog/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          <span id="subtitle" title="啃 TS 官方文档 ①">
+            
+          </span>
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2021-11-17 21:25" pubdate>
+          2021年11月17日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.6k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          22 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">啃 TS 官方文档 ①</h1>
+            
+            <div class="markdown-body">
+              
+              <p>最近在好好学习 TS ,今天下定决心好好啃一啃 TS 官方文档，打开文档第一段就是 </p>
+<blockquote>
+<p>祝贺你选择了 TS 作为你的第一门语言，你的决定很棒棒哦 ！！！</p>
+</blockquote>
+<p>感想的话，棒不棒我不敢说，但是 vue2 当年使用的 flow 作为类型检查，网上大概在 2017 年的时候，vue 项目中配置 flow 的文章一大堆，能说明什么？flow 很火吗？我不清楚<br>但是 TS 这东西，学一学还是有必要的  </p>
+<p>所以开始喽  </p>
+<p>下面就介绍了 JS 的 简短历史(Brief History)  </p>
+<p>其中说到最开始 JS 被发明之初，是希望在网页里 嵌入(embed) 一段短代码，超过 十几行(dozen lines) 代码，就已经很不寻常了，然后早期的浏览器执行代码 非常慢(pretty slowly)，然后随时间的推移，JS 变得越来越流行，开发者能用 JS 做到的事情也越来越多了  </p>
+<p>浏览器的开发者通过优化引擎 (动态编译)，并且扩展更多 api, 使得 web 开发人员用的更多，在现代网站，你的浏览器<br> 经常(frequently) 运行几十万行代码，这是网页长期和 逐渐的(gradual) 成长过程，开始作为一些简单地静态网站，并且 进化(evolving) 为各种各样的丰富应用的平台。  </p>
+<p> 不仅仅这些哦，JS 已经变得足够受欢迎，在浏览器的背景之外也有被使用，例如使用 nodeJS 实现(implement) 一个<br>JS 服务器，run anywhere 的 性质(nature)  使得 JS 成为其跨平台开发最有 吸引力(attractive) 的选择，好多开发者只用 JS 一门语言就可以搞定全栈了  </p>
+<p>总结就是，JS 嘎嘎牛逼，我们有的是一个图快设计出来的语言，现在 JS 已经 完全成熟(full-fledged) 了，成为了可以用了写百万行应用的工具。每个语言呢又都有它自己的  怪癖(quirks) 怪异、令人惊讶的地方。</p>
+<p>JS 低下(humble) 的开始使得它有这些东西，不信你看: </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs JS"><span class="hljs-keyword">if</span> (<span class="hljs-string">&quot;&quot;</span> == <span class="hljs-number">0</span>) &#123;<br>  <span class="hljs-comment">// It is! But why??</span><br>&#125;<br><span class="hljs-keyword">if</span> (<span class="hljs-number">1</span> &lt; x &lt; <span class="hljs-number">3</span>) &#123;<br>  <span class="hljs-comment">// True for *any* value of x!</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>JS 竟然允许不存在的属性</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs JS"><span class="hljs-keyword">const</span> obj = &#123; <span class="hljs-attr">width</span>: <span class="hljs-number">10</span>, <span class="hljs-attr">height</span>: <span class="hljs-number">15</span> &#125;;<br><span class="hljs-comment">// Why is this NaN? Spelling is hard!</span><br><span class="hljs-keyword">const</span> area = obj.<span class="hljs-property">width</span> * obj.<span class="hljs-property">heigth</span>;<br></code></pre></td></tr></table></figure>
+<p>大多数语言会在发生这种错误的时候 抛出(occur) 异常，有一些语言在编译的时候就能发现，当写一些小程序的时候，一些怪癖是在可控(manageable) 范围内的 ，但是写成百上千行代码的时候，这些 不断地(constant)  惊喜是一个严重的问题。</p>
+<h3 id="TS-提供了静态类型的检查"><a href="#TS-提供了静态类型的检查" class="headerlink" title="TS 提供了静态类型的检查"></a>TS 提供了静态类型的检查</h3><p>我们早就说过有些程序不允许那些 bug 多得程序跑起来，在代码还没跑起来的时候发现错误，这就是静态类型的检查。确定什么错误，和一些不在运行时值的类型错误，被称为类型检查。</p>
+<p>TS 在程序执行前进行检查，基于某个值的类型，是一种静态类型检查器，例如上面的求面积的例子，会告诉我们 没有那个拼写错误的属性</p>
+<p>JS 类型的 超集(Superset)<br>TS 跟 JS 怎样关联的呢  </p>
+<h4 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h4><p>JS 语法是合法的 TS     (参考 ☞ 指)refers </p>
+<p>根据其语法，TS 不会认为 JS 语法有任何错误，这意味着你可以在 TS 文件中写 JS 文件，完全不需要担心有错误。</p>
+<h4 id="类型"><a href="#类型" class="headerlink" title="类型"></a>类型</h4><p>然而，TS 是类型的超集，意味着他对一些值能不能使用添加了一些规则，早先提到的 obj.length 并不是一个语法错误，而是一个类型的使用方式错误  </p>
+<figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs arcade"><span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-number">4</span> / []);<br></code></pre></td></tr></table></figure>
+<p>这个 语法结构 (syntactically-legal) JS 会打印一个 Infinity</p>
+<p>TS 考虑到用一个数字除以一个数组是一种很 荒谬的 nonsensical 行为，然后会发出一个报错<br>告诉我们右侧值不对  </p>
+<p>你可能真的 打算intend to 用数字除以一个数组，也许 perhaps 只是想看看会发生什么，但是大多数情况下，这都是一个编程错误，TS 的 意愿 designed 是在程序书写正确的同时，仍然捕获更多可能的常见错误，稍后会了解到你可以在代码中怎么配置 TS 的检查严格程度  </p>
+<p>如果你将一些代码从 JS 文件中移动到一个 TS 文件中，你可能看到很多类型错误，这取决于代码如何写， 这些可能是 合理的legitimate 问题，TS 过于overly 保守conservative 了</p>
+<p>通过本指南，我们将会 展示 demonstrate 如何添加各种 (various 多方面的；多样的) 的语法 消除 eliminate 这些错误  </p>
+<h4 id="运行时行为"><a href="#运行时行为" class="headerlink" title="运行时行为"></a>运行时行为</h4><p>TS 也是一个运行时语言，保留 preserves 了 JS 的运行时行为， 例如 除以 0 会是 Infinity 而不是一个运行时报错，一个 原则 principle TS 永远不会改变 JS 代码的运行时行为。</p>
+<p>这意味着，如果你从 JS 代码移动到 TS 里，是能保证 guarantee 运行的方式是相同的，即使 TS 认为有类型错误  </p>
+<p>保持相同的运行时行为是 TS 的基本承诺，这就意味着你可以在两种语言之间 迁移 transition(转换)，而不用担心有些 细微subtle 的不同会让你程序停止工作。</p>
+<h4 id="清除类型-Erased-Types"><a href="#清除类型-Erased-Types" class="headerlink" title="清除类型 Erased Types"></a>清除类型 Erased Types</h4><p>粗略 Roughly  的讲，一旦 once  TS 编译器完成对你代码的检查，他就会在编译完成的代码里清除类型，这意味着一旦你的代码完成编译，结果就是没有没醒信息的纯 JS 代码。</p>
+<p>这也意味着虽然根据类型 推断inferred ，但 TS 不会改变你程序的行为<br>本质上 bottom line,当你在编译时看到类型错误，类型系统本身并不会影响到你程序是怎么工作的  </p>
+<p>最后，TS 没有提供运行时的其他库，你的代码将会和用 JS 的标准库一样，因此，没有需要学习的 TS 框架细节</p>
+<h3 id="学习-JS-和-TS"><a href="#学习-JS-和-TS" class="headerlink" title="学习 JS 和 TS"></a>学习 JS 和 TS</h3><p>我们常常看到一个问题，学 TS 还是 JS?  </p>
+<p>这个问题的答案是，你不需要学习 JS 就可以学习 TS, TS 和 JS 共享语法和运行时行为，所以你了解任何 JS 的内容都能帮助你同时学习 TS </p>
+<p>有许多许多的资源帮程序员学习 JS ,如果你写 TS 程序就不应该忽略他们，例如，Stack Overflow 上有关 JS 的问题是 TS 问题的 20 倍， 但是所有的 JS 问题都可以应用在 TS 上。  </p>
+<p>如果你自己搜索如何在 TS 中对数组进行排序，记住：TS 是带有类型检查的 JS 运行时，你在 TS 中对数组进行排序的方式和你在 JS 中的排序方式是一样的，如果你 立刻 directly 就找到了 有关 TS 的资源，那很棒。但不要限制自己以考虑您需要关于如何完成 accomplish  运行时任务的日常问题的特定类型的答案。</p>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/blog/tags/ts/">#ts</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>啃 TS 官方文档 ①</div>
+      <div>https://kmq116.github.io/blog/2021/11/17/ts/%E5%95%83-ts-%E5%AE%98%E6%96%B9%E6%96%87%E6%A1%A3/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>coderco</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2021年11月17日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.staticfile.org/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/blog/js/events.js" ></script>
+<script  src="/blog/js/plugins.js" ></script>
+
+
+  
+    <script  src="/blog/js/img-lazyload.js" ></script>
+  
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var title = subtitle.title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/tocbot/4.18.0/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/blog/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/blog/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
