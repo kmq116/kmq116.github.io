@@ -24,7 +24,7 @@
 <meta property="og:description" content="又到了这个问题记得在初学 c 语言的时候，看过小甲鱼的视频，讲了基本语法之后，直接上手干了一道题，是汉诺塔递归，对我本人的心里造成了巨大创伤，三根柱子搬来搬去，当时真的无法理解这个递归过程 后来去知乎上，搜 如何理解汉诺塔的递归（大概两年前）当时记住了一个答案 在刚刚，自己瞎几把学东西的时候，又遇见了汉诺塔的题，但是本菜鸡还是不会这个，怎么办呢？ 当然是玩一下汉诺塔游戏，后来发现四层以内的汉诺很快">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-02-26T22:36:59.000Z">
-<meta property="article:modified_time" content="2023-03-02T09:40:10.802Z">
+<meta property="article:modified_time" content="2023-04-11T15:29:08.621Z">
 <meta property="article:author" content="coderco">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -267,7 +267,7 @@
 <p>至此，需求明确，也可以推导出汉诺塔求解的递归过程（推完之后也是成功解出了第 6 层的汉诺塔</p>
 <p>那么怎么用程序来描述其递归过程呢？  </p>
 <p>这里用了我最熟悉的 js 来展示这个递归过程</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> a = [<span class="hljs-number">1</span>, <span class="hljs-number">0</span>];<br><span class="hljs-keyword">const</span> b = [];<br><span class="hljs-keyword">const</span> c = [];<br><span class="hljs-keyword">function</span> <span class="hljs-title function_">hanota</span>(<span class="hljs-params">A, B, C</span>) &#123;<br>  <span class="hljs-title function_">move</span>(A.<span class="hljs-property">length</span>, A, B, C);<br>  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(A, B, C);<br>&#125;<br><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">move</span>(<span class="hljs-params">n, A, B, C</span>) &#123;<br>  <span class="hljs-keyword">if</span> (n === <span class="hljs-number">1</span>) &#123;<br>    C.<span class="hljs-title function_">push</span>(A.<span class="hljs-title function_">pop</span>());<br>  &#125; <span class="hljs-keyword">else</span> &#123;<br>    <span class="hljs-title function_">move</span>(n - <span class="hljs-number">1</span>, A, C, B);<br>    C.<span class="hljs-title function_">push</span>(A.<span class="hljs-title function_">pop</span>());<br>    <span class="hljs-title function_">move</span>(n - <span class="hljs-number">1</span>, B, A, C);<br>  &#125;<br>&#125;<br><br><span class="hljs-title function_">hanota</span>(a, b, c);<br></code></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> a = [<span class="hljs-number">1</span>, <span class="hljs-number">0</span>];<br><span class="hljs-keyword">const</span> b = [];<br><span class="hljs-keyword">const</span> c = [];<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">hanota</span>(<span class="hljs-params">A, B, C</span>) </span>&#123;<br>  move(A.length, A, B, C);<br>  <span class="hljs-built_in">console</span>.log(A, B, C);<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">move</span>(<span class="hljs-params">n, A, B, C</span>) </span>&#123;<br>  <span class="hljs-keyword">if</span> (n === <span class="hljs-number">1</span>) &#123;<br>    C.push(A.pop());<br>  &#125; <span class="hljs-keyword">else</span> &#123;<br>    move(n - <span class="hljs-number">1</span>, A, C, B);<br>    C.push(A.pop());<br>    move(n - <span class="hljs-number">1</span>, B, A, C);<br>  &#125;<br>&#125;<br><br>hanota(a, b, c);<br></code></pre></td></tr></table></figure>
 
 <p>过程上面也解释了，这段代码用了 n = 2 时做例子，其中 </p>
 <pre><code class="js">move(n - 1, A, C, B);
@@ -331,23 +331,6 @@ move(n - 1, B, A, C);
 
 
 
-              
-                <div class="post-prevnext my-3">
-                  <article class="post-prev col-6">
-                    
-                    
-                  </article>
-                  <article class="post-next col-6">
-                    
-                    
-                      <a href="/blog/2023/02/15/2023%E5%B9%B4%E8%AE%A1%E5%88%92/" title="2023 新年计划">
-                        <span class="hidden-mobile">2023 新年计划</span>
-                        <span class="visible-mobile">下一篇</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
-                    
-                  </article>
-                </div>
               
             </div>
 

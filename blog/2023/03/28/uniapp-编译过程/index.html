@@ -16,20 +16,20 @@
   <meta name="author" content="coderco">
   <meta name="keywords" content="">
   
-    <meta name="description" content="文章写在知乎上了">
+    <meta name="description" content="uniapp - hbuilderx 分析使用 uniapp 也很久了，作为一个前端，用 uni 写安卓的感觉还不错uni 是如何编译的呢？首先打开 hbuilderx 目录 HBuilderX.3.7.9.20230324\HBuilderX\plugins然后找到里面的 plugins\uniapp-cli这个就是 uni 的脚手架了（别问我怎么知道的，我是一个一个找的，感觉应该是这个，然后打">
 <meta property="og:type" content="article">
-<meta property="og:title" content="浅读 vue 源码">
-<meta property="og:url" content="https://kmq116.github.io/blog/2022/04/03/vue%20%E6%BA%90%E7%A0%81/vue-%E6%BA%90%E7%A0%81/index.html">
+<meta property="og:title" content="uniapp 编译过程">
+<meta property="og:url" content="https://kmq116.github.io/blog/2023/03/28/uniapp-%E7%BC%96%E8%AF%91%E8%BF%87%E7%A8%8B/index.html">
 <meta property="og:site_name" content="风会停息">
-<meta property="og:description" content="文章写在知乎上了">
+<meta property="og:description" content="uniapp - hbuilderx 分析使用 uniapp 也很久了，作为一个前端，用 uni 写安卓的感觉还不错uni 是如何编译的呢？首先打开 hbuilderx 目录 HBuilderX.3.7.9.20230324\HBuilderX\plugins然后找到里面的 plugins\uniapp-cli这个就是 uni 的脚手架了（别问我怎么知道的，我是一个一个找的，感觉应该是这个，然后打">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-04-03T13:21:32.000Z">
+<meta property="article:published_time" content="2023-03-28T00:28:24.000Z">
 <meta property="article:modified_time" content="2023-04-11T15:29:08.621Z">
 <meta property="article:author" content="coderco">
 <meta name="twitter:card" content="summary_large_image">
   
   
-  <title>浅读 vue 源码 - 风会停息</title>
+  <title>uniapp 编译过程 - 风会停息</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -173,7 +173,7 @@
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
-          <span id="subtitle" title="浅读 vue 源码">
+          <span id="subtitle" title="uniapp 编译过程">
             
           </span>
         </div>
@@ -185,8 +185,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-04-03 13:21" pubdate>
-          2022年4月3日 下午
+        <time datetime="2023-03-28 00:28" pubdate>
+          2023年3月28日 凌晨
         </time>
       </span>
     
@@ -197,7 +197,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          8 字
+          2.2k 字
         
       </span>
     
@@ -208,7 +208,7 @@
         
         
         
-          1 分钟
+          19 分钟
         
       </span>
     
@@ -246,11 +246,28 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">浅读 vue 源码</h1>
+            <h1 style="display: none">uniapp 编译过程</h1>
             
             <div class="markdown-body">
               
-              <p><a target="_blank" rel="noopener" href="https://www.zhihu.com/column/c_1503887097446068224">文章写在知乎上了</a></p>
+              <h3 id="uniapp-hbuilderx-分析"><a href="#uniapp-hbuilderx-分析" class="headerlink" title="uniapp - hbuilderx 分析"></a>uniapp - hbuilderx 分析</h3><p>使用 uniapp 也很久了，作为一个前端，用 uni 写安卓的感觉还不错<br>uni 是如何编译的呢？<br>首先打开 hbuilderx 目录 HBuilderX.3.7.9.20230324\HBuilderX\plugins<br>然后找到里面的 plugins\uniapp-cli<br>这个就是 uni 的脚手架了（别问我怎么知道的，我是一个一个找的，感觉应该是这个，然后打个 log，慢慢试出来的）</p>
+<p>打开 bin 目录下 HBuilderX.3.7.9.20230324\HBuilderX\plugins\uniapp-cli\bin\uniapp-cli.js 文件  </p>
+<p>其中有这么一行，这就是 uni 运行的地方</p>
+<p>uniapp-cli.js</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// @vue/cli-service/lib/Service.js</span><br><span class="hljs-keyword">const</span> service = <span class="hljs-keyword">new</span> Service(process.env.VUE_CLI_CONTEXT || process.cwd())<br></code></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(process.env.VUE_CLI_CONTEXT || process.cwd())<br><span class="hljs-comment">// C:\Users\coder\Downloads\HBuilderX.3.7.9.20230324\HBuilderX\plugins\uniapp-cli</span><br></code></pre></td></tr></table></figure>
+
+<p>然后最下方运行了 service.run  </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs js">service.run((process.env.NODE_ENV === <span class="hljs-string">&#x27;development&#x27;</span> &amp;&amp; platform === <span class="hljs-string">&#x27;h5&#x27;</span>) ? <span class="hljs-string">&#x27;uni-serve&#x27;</span> : <span class="hljs-string">&#x27;uni-build&#x27;</span>,<br>    args).catch(<span class="hljs-function"><span class="hljs-params">err</span> =&gt;</span> &#123;<br>    <span class="hljs-keyword">if</span> (err.message.includes(<span class="hljs-string">&#x27;@dcloudio/uni-mp-lark/dist/uni.mp.esm.js&#x27;</span>)) &#123;<br>        err = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">&#x27;Vue3 项目暂不支持飞书小程序&#x27;</span>)<br>    &#125;<br>    error(err)<br>    process.exit(<span class="hljs-number">1</span>)<br>&#125;)<br><br></code></pre></td></tr></table></figure>
+<p>Service.js<br>下面这段代码给 this.commands 赋值</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// apply plugins.</span><br><span class="hljs-built_in">this</span>.plugins.forEach(<span class="hljs-function">(<span class="hljs-params">&#123; id, apply &#125;</span>) =&gt;</span> &#123;<br>  <span class="hljs-keyword">if</span> (<span class="hljs-built_in">this</span>.pluginsToSkip.has(id)) <span class="hljs-keyword">return</span><br>  apply(<span class="hljs-keyword">new</span> PluginAPI(id, <span class="hljs-built_in">this</span>), <span class="hljs-built_in">this</span>.projectOptions)<br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<p>经打印，有效赋值语句为 </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js">apply(<span class="hljs-keyword">new</span> PluginAPI(id, <span class="hljs-built_in">this</span>), <span class="hljs-built_in">this</span>.projectOptions)<br></code></pre></td></tr></table></figure>
+<p>apply 函数的生成方式在 resolvePlugins() 函数中，根据 package.json 文件去获取包名</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs js">   <span class="hljs-keyword">if</span> (inlinePlugins) &#123;<br>    plugins = useBuiltIn !== <span class="hljs-literal">false</span><br>        ? builtInPlugins.concat(inlinePlugins)<br>        : inlinePlugins<br>&#125; <span class="hljs-keyword">else</span> &#123;<br>    <span class="hljs-keyword">const</span> projectPlugins = <span class="hljs-built_in">Object</span>.keys(<span class="hljs-built_in">this</span>.pkg.devDependencies || &#123;&#125;)<br>        .concat(<span class="hljs-built_in">Object</span>.keys(<span class="hljs-built_in">this</span>.pkg.dependencies || &#123;&#125;))<br>        .filter(isPlugin)<br>        .map(<span class="hljs-function"><span class="hljs-params">id</span> =&gt;</span> &#123;<br>            <span class="hljs-keyword">if</span> (<br>                <span class="hljs-built_in">this</span>.pkg.optionalDependencies &amp;&amp;<br>                id <span class="hljs-keyword">in</span> <span class="hljs-built_in">this</span>.pkg.optionalDependencies<br>            ) &#123;<br>                <span class="hljs-keyword">let</span> apply = <span class="hljs-function">() =&gt;</span> &#123;&#125;<br>                <span class="hljs-keyword">try</span> &#123;<br>                    apply = <span class="hljs-built_in">require</span>(id)<br>                &#125; <span class="hljs-keyword">catch</span> (e) &#123;<br>                    warn(<span class="hljs-string">`Optional dependency <span class="hljs-subst">$&#123;id&#125;</span> is not installed.`</span>)<br>                &#125;<br><br>                <span class="hljs-keyword">return</span> &#123; id, apply &#125;<br>            &#125; <span class="hljs-keyword">else</span> &#123;<br>                <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;else id&#x27;</span>,id)<br>                <span class="hljs-keyword">return</span> idToPlugin(id)<br>            &#125;<br>        &#125;)<br>    <span class="hljs-built_in">console</span>.log(projectPlugins)<br>    plugins = builtInPlugins.concat(projectPlugins)<br>&#125;<br><br></code></pre></td></tr></table></figure>
+<p>最后路径 uniapp-cli/node_modules/@dcloudio/vue-cli-plugin-uni/index.js<br>uniapp-cli/node_modules/@dcloudio/vue-cli-plugin-uni/commands/build.js  build 函数  </p>
+<p>编译安卓的路径<br>uniapp-cli/node_modules/@dcloudio/webpack-uni-pages-loader/lib/platforms/app-plus </p>
 
               
             </div>
@@ -267,8 +284,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>浅读 vue 源码</div>
-      <div>https://kmq116.github.io/blog/2022/04/03/vue%20%E6%BA%90%E7%A0%81/vue-%E6%BA%90%E7%A0%81/</div>
+      <div>uniapp 编译过程</div>
+      <div>https://kmq116.github.io/blog/2023/03/28/uniapp-%E7%BC%96%E8%AF%91%E8%BF%87%E7%A8%8B/</div>
     </div>
     <div class="license-meta">
       
@@ -280,7 +297,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2022年4月3日</div>
+          <div>2023年3月28日</div>
         </div>
       
       

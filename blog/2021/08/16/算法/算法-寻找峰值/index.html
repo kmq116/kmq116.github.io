@@ -24,7 +24,7 @@
 <meta property="og:description" content="寻找一维数组峰值峰值元素是指其值大于左右相邻值的元素。在一维数组中找出这个元素。 解法 暴力破解，遍历数组每个元素判断其左右两侧元素    优化，每次遍历前只需要判断当前值是不是大于后值就完事，理由是如果能执行到 i 的位置，说明上次条件判断不成立，那么 nums[i] 值肯定是大于 num[i-1],时间复杂度 O(n)   12345678910111213141516171819&#x2F;&#x2F; 题目来">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-08-16T00:07:45.000Z">
-<meta property="article:modified_time" content="2023-03-02T09:40:10.802Z">
+<meta property="article:modified_time" content="2023-04-11T15:29:08.621Z">
 <meta property="article:author" content="coderco">
 <meta property="article:tag" content="算法题">
 <meta name="twitter:card" content="summary_large_image">
@@ -258,11 +258,11 @@
 <li><p>优化，每次遍历前只需要判断当前值是不是大于后值就完事，<br>理由是如果能执行到 i 的位置，说明上次条件判断不成立，那么 <code>nums[i]</code> 值肯定是大于 <code>num[i-1]</code>,时间复杂度 <code>O(n)</code></p>
 </li>
 </ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// 题目来源 https://leetcode-cn.com/problems/find-peak-element/</span><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param</span> &#123;<span class="hljs-type">number[]</span>&#125; <span class="hljs-variable">nums</span></span><br><span class="hljs-comment"> * <span class="hljs-doctag">@return</span> &#123;<span class="hljs-type">number</span>&#125;</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">var</span> findPeakElement = <span class="hljs-keyword">function</span> (<span class="hljs-params">nums</span>) &#123;<br>  <span class="hljs-keyword">const</span> length = nums.<span class="hljs-property">length</span><br>  <span class="hljs-comment">// 如果只有一个元素</span><br>  <span class="hljs-keyword">if</span> (length === <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span><br>  <span class="hljs-comment">// 两个元素</span><br>  <span class="hljs-keyword">if</span> (nums[length - <span class="hljs-number">1</span>] &gt; nums[length - <span class="hljs-number">2</span>]) <span class="hljs-keyword">return</span> length - <span class="hljs-number">1</span><br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; length; i++) &#123;<br>    <span class="hljs-comment">// 每次遍历前只需要判断当前值是不是大于后值就完事</span><br>    <span class="hljs-comment">// 理由是如果能执行到 i 的位置，说明上次条件判断不成立，那么 nums[i] 值肯定是大于 num[i-1]</span><br>    <span class="hljs-keyword">if</span> (nums[i] &gt; nums[i + <span class="hljs-number">1</span>]) &#123;<br>      <span class="hljs-keyword">return</span> i<br>    &#125;<br>  &#125;<br>&#125;;<span class="hljs-comment">// 时间复杂度 O(n)</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// 题目来源 https://leetcode-cn.com/problems/find-peak-element/</span><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;number[]&#125;</span> <span class="hljs-variable">nums</span></span></span><br><span class="hljs-comment"> * <span class="hljs-doctag">@return <span class="hljs-type">&#123;number&#125;</span></span></span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">var</span> findPeakElement = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">nums</span>) </span>&#123;<br>  <span class="hljs-keyword">const</span> length = nums.length<br>  <span class="hljs-comment">// 如果只有一个元素</span><br>  <span class="hljs-keyword">if</span> (length === <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span><br>  <span class="hljs-comment">// 两个元素</span><br>  <span class="hljs-keyword">if</span> (nums[length - <span class="hljs-number">1</span>] &gt; nums[length - <span class="hljs-number">2</span>]) <span class="hljs-keyword">return</span> length - <span class="hljs-number">1</span><br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; length; i++) &#123;<br>    <span class="hljs-comment">// 每次遍历前只需要判断当前值是不是大于后值就完事</span><br>    <span class="hljs-comment">// 理由是如果能执行到 i 的位置，说明上次条件判断不成立，那么 nums[i] 值肯定是大于 num[i-1]</span><br>    <span class="hljs-keyword">if</span> (nums[i] &gt; nums[i + <span class="hljs-number">1</span>]) &#123;<br>      <span class="hljs-keyword">return</span> i<br>    &#125;<br>  &#125;<br>&#125;;<span class="hljs-comment">// 时间复杂度 O(n)</span><br></code></pre></td></tr></table></figure>
 <ul>
 <li>使用二分法查找，时间复杂度 <code>O(logN)</code></li>
 </ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// 每次取两端数值的中间值，对比前后中间值前后元素大小，缩小 left right 的范围，最后确定出索引位置</span><br><span class="hljs-keyword">var</span> findPeakElement = <span class="hljs-keyword">function</span> (<span class="hljs-params">nums</span>) &#123;<br>  <span class="hljs-keyword">let</span> left = <span class="hljs-number">0</span>, right = nums.<span class="hljs-property">length</span> - <span class="hljs-number">1</span><br>  <span class="hljs-keyword">while</span> (left &lt; right) &#123;<br>      <span class="hljs-keyword">let</span> mid = <span class="hljs-built_in">parseInt</span>((left + right) / <span class="hljs-number">2</span>)<br>      <span class="hljs-keyword">if</span> (nums[mid] &gt; nums[mid + <span class="hljs-number">1</span>]) &#123;<br>          right = mid<br>      &#125; <span class="hljs-keyword">else</span> &#123;<br>          left = mid + <span class="hljs-number">1</span><br>      &#125;<br>  &#125;<br>  <span class="hljs-keyword">return</span> left<br>&#125;;<br></code></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// 每次取两端数值的中间值，对比前后中间值前后元素大小，缩小 left right 的范围，最后确定出索引位置</span><br><span class="hljs-keyword">var</span> findPeakElement = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">nums</span>) </span>&#123;<br>  <span class="hljs-keyword">let</span> left = <span class="hljs-number">0</span>, right = nums.length - <span class="hljs-number">1</span><br>  <span class="hljs-keyword">while</span> (left &lt; right) &#123;<br>      <span class="hljs-keyword">let</span> mid = <span class="hljs-built_in">parseInt</span>((left + right) / <span class="hljs-number">2</span>)<br>      <span class="hljs-keyword">if</span> (nums[mid] &gt; nums[mid + <span class="hljs-number">1</span>]) &#123;<br>          right = mid<br>      &#125; <span class="hljs-keyword">else</span> &#123;<br>          left = mid + <span class="hljs-number">1</span><br>      &#125;<br>  &#125;<br>  <span class="hljs-keyword">return</span> left<br>&#125;;<br></code></pre></td></tr></table></figure>
 
 <h3 id="寻找二维数组峰值"><a href="#寻找二维数组峰值" class="headerlink" title="寻找二维数组峰值"></a>寻找二维数组峰值</h3><p>有一个矩阵，找出一个元素，这个元素大于其上下左右元素的值</p>
 <h3 id="解法-1"><a href="#解法-1" class="headerlink" title="解法"></a>解法</h3><ul>
@@ -270,7 +270,7 @@
 <li>二分法查找，先找出二维数组中间行的峰值元素，然后去判断此元素与其上下元素大小的关系，去缩小峰值元素的范围，最后计算出峰值元素</li>
 </ul>
 <p>需要注意在递归条件执行前需要判断 mid 值的范围不要超过边界</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> <span class="hljs-title function_">peak2D</span> = (<span class="hljs-params">nums, start, end</span>) =&gt; &#123;<br>  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(start, end);<br>  <span class="hljs-keyword">const</span> mid =  <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">floor</span>((end + start) / <span class="hljs-number">2</span>);<br>  <span class="hljs-keyword">const</span> index = <span class="hljs-title function_">findPeakElement</span>(nums[mid])<br>  <span class="hljs-keyword">if</span> (mid &gt; <span class="hljs-number">0</span> &amp;&amp; nums[mid][index] &lt; nums[mid - <span class="hljs-number">1</span>][index]) &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-title function_">peak2D</span>(nums, start, mid)<br>  &#125;<br>  <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (mid &lt; nums.<span class="hljs-property">length</span> - <span class="hljs-number">1</span> &amp;&amp; nums[mid][index] &lt; nums[mid + <span class="hljs-number">1</span>][index]) &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-title function_">peak2D</span>(nums, mid, end)<br>  &#125;<br>  <span class="hljs-keyword">return</span> &#123; mid,index &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> peak2D = <span class="hljs-function">(<span class="hljs-params">nums, start, end</span>) =&gt;</span> &#123;<br>  <span class="hljs-built_in">console</span>.log(start, end);<br>  <span class="hljs-keyword">const</span> mid =  <span class="hljs-built_in">Math</span>.floor((end + start) / <span class="hljs-number">2</span>);<br>  <span class="hljs-keyword">const</span> index = findPeakElement(nums[mid])<br>  <span class="hljs-keyword">if</span> (mid &gt; <span class="hljs-number">0</span> &amp;&amp; nums[mid][index] &lt; nums[mid - <span class="hljs-number">1</span>][index]) &#123;<br>    <span class="hljs-keyword">return</span> peak2D(nums, start, mid)<br>  &#125;<br>  <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (mid &lt; nums.length - <span class="hljs-number">1</span> &amp;&amp; nums[mid][index] &lt; nums[mid + <span class="hljs-number">1</span>][index]) &#123;<br>    <span class="hljs-keyword">return</span> peak2D(nums, mid, end)<br>  &#125;<br>  <span class="hljs-keyword">return</span> &#123; mid,index &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
 
               
             </div>
@@ -284,16 +284,6 @@
 
 <span class="category-chains">
   
-  
-    
-      <span class="category-chain">
-        
-  <a href="/blog/categories/%E7%AE%97%E6%B3%95/" class="category-chain-item">算法</a>
-  
-  
-
-      </span>
-    
   
 </span>
 
@@ -353,29 +343,6 @@
 
 
 
-              
-                <div class="post-prevnext my-3">
-                  <article class="post-prev col-6">
-                    
-                    
-                      <a href="/blog/2021/10/04/%E7%BC%96%E8%AF%91%E7%9B%B8%E5%85%B3/%E5%89%8D%E7%AB%AF%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86the-super-tiny-compiler/" title="浅浅浅尝编译原理 the-super-tiny-compiler">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">浅浅浅尝编译原理 the-super-tiny-compiler</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
-                  </article>
-                  <article class="post-next col-6">
-                    
-                    
-                      <a href="/blog/2021/07/25/%E7%AE%97%E6%B3%95/%E7%AE%97%E6%B3%95-%E6%9C%80%E9%95%BF%E5%9B%9E%E6%96%87%E5%AD%90%E4%B8%B2/" title="算法-最长回文子串">
-                        <span class="hidden-mobile">算法-最长回文子串</span>
-                        <span class="visible-mobile">下一篇</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
-                    
-                  </article>
-                </div>
               
             </div>
 
